@@ -37,6 +37,8 @@ async function signLicense(key) {
 
 
 async function main() {
+    console.log(`FOUNDRY_LICENSE: ${FOUNDRY_LICENSE}`);
+    console.log(`FOUNDRY_VERSION: ${FOUNDRY_VERSION}`)
     const license = await signLicense(FOUNDRY_LICENSE);
 
     console.log("Getting download URL...");
