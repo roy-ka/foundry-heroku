@@ -12,14 +12,13 @@ const SAVE_DATA_TIME = 60000;
 
 function init() {
     // gitignore
-    console.log('ROY1')
     fs.writeFileSync(`${DATA_PATH}/.gitignore`, [
         "*.lock",
         "Config/admin.txt",
         "Config/license.json",
         "Logs/",
     ].join("\n"));
-
+    
     // config
     fs.mkdirSync(`${DATA_PATH}/Config`, { recursive: true });
 
@@ -84,11 +83,6 @@ function saveDataAfterTimeout() {
 
 async function main() {
     // clone data
-    console.log('ROY2')
-    console.log(`token: ${TOKEN}`)
-    console.log(`REPO: ${REPO}`)
-    console.log(`FOUNDRY_LICENSE: ${FOUNDRY_LICENSE}`)
-
     let output = await exec(`git clone https://${TOKEN}:x-oauth-basic@github.com/${REPO}.git ${DATA_PATH}`);
     console.log(output.stdout);
     console.error(output.stderr);
@@ -102,7 +96,8 @@ async function main() {
     if (!fs.existsSync(`${DATA_PATH}/Config/options.json`)) {
         init();
     }
-
+    console.log('finished init')
+    
     // license
     fs.writeFileSync(`${DATA_PATH}/Config/license.json`, JSON.stringify({
         license: FOUNDRY_LICENSE
