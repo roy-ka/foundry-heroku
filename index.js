@@ -12,6 +12,7 @@ const SAVE_DATA_TIME = 60000;
 
 function init() {
     // gitignore
+    console.log('ROY1')
     fs.writeFileSync(`${DATA_PATH}/.gitignore`, [
         "*.lock",
         "Config/admin.txt",
@@ -83,6 +84,7 @@ function saveDataAfterTimeout() {
 
 async function main() {
     // clone data
+    console.log('ROY2')
     let output = await exec(`git clone https://${TOKEN}:x-oauth-basic@github.com/${REPO}.git ${DATA_PATH}`);
     console.log(output.stdout);
     console.error(output.stderr);
