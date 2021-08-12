@@ -85,6 +85,10 @@ function saveDataAfterTimeout() {
 async function main() {
     // clone data
     console.log('ROY2')
+    console.log(`token: ${TOKEN}`)
+    console.log(`REPO: ${REPO}`)
+    console.log(`FOUNDRY_LICENSE: ${FOUNDRY_LICENSE}`)
+
     let output = await exec(`git clone https://${TOKEN}:x-oauth-basic@github.com/${REPO}.git ${DATA_PATH}`);
     console.log(output.stdout);
     console.error(output.stderr);
